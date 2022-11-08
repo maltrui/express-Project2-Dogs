@@ -5,6 +5,8 @@ var passport = require("passport");
 const fetch = require('node-fetch');
 const rootUrl = 'https://random.dog/woof.json'
 
+const indexController = require('../controllers/index')
+
 // import private route middleware
 const isLoggedIn = require("../config/auth");
 
@@ -18,12 +20,9 @@ router.get("/", function (req, res, next) {
       dogPhoto = dog.url
       res.render("index", { title: "Pick A Dog", dogPhoto });
     })
-
 });
 
-router.get("/post", isLoggedIn, function (req, res) {
-  res.render("post", { title: "Posts"});
-});
+router.post('/post/create', isLoggedIn, indexController.create)
 
 // OAuth Routes
 

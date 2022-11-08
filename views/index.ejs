@@ -11,6 +11,27 @@
   <% } else { %>
     <img class = 'randomDog' src='<%= dogPhoto %>' alt ='Dog should be here' >
   <% } %>
+  <% if (user) { %>
+    <form id="add-dog-post" method="POST"
+    action="/post/create">
+      <label>Review:</label>
+      <textarea name="content"></textarea>
+      <label>Rating:</label>
+      <select name="rating">
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="14">14</option>
+        <option value="15">15</option>
+      </select>
+      <input type="submit" value="Post">
+      <input name="photo" value="<%=dogPhoto%>" placeholder="<%=dogPhoto%>" class = 'invisible'>
+      
+    </form>
+  <% } else { %>
+    <p> Log-In to make a Post! </p>
+ <% } %>
 </body>
 
 </html>

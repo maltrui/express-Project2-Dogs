@@ -4,7 +4,38 @@
     <%- include('./partials/nav') %>
 
 <body>
+    <% if(photos.length) { %>
+        <table>
+            <thead>
+                <th> Good Dogs </th>
+                <th> Username </th>
+                <th> User Rating </th>
+                <th> User Comment </th>
+                <th> Post </th>
+            </thead>
+            <tbody>
+                <% photos.forEach(function(r) { %>
+                    <tr>
+                    <td>  
+                        <% if(r.photo.charAt(r.photo.length - 1) == '4'){ %>
+                        <video class = 'randomDog' autoplay controls>
+                          <source src=<%= r.photo %> type='video/mp4'>
+                        </video>
+                      <% } else { %>
+                        <img class = 'randomDog' src= <%= r.photo %> alt ='Dog should be here' >
+                      <% } %>
+                    </td>
+                    <td><%= r.user.name %></td>
+                    <td><%= r.rating %> </td>
+                    <td><%= r.content %> </td>
+                    <td><a href="">Comment</a></td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
 
+    <%  } else {%>
+    <h2>No Posts yet!</h2>
+    <% } %>
 </body>
-
 </html>

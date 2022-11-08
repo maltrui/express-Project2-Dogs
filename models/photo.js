@@ -3,8 +3,12 @@ const Schema = mongoose.Schema;
 
 const photoSchema = new Schema(
     {
-        url: {type: String, required: true},
-        likes: {type: Schema.Types.ObjectId, ref: 'User'}
+        content: {type: String, required: true},
+        rating:{type: Number, require: true},
+        photo: {type: String, required: true},
+        user: {type: Schema.Types.ObjectId, ref: 'User'}
+    },{
+        timestamps: true
     }
 )
 
