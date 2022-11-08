@@ -6,3 +6,9 @@ body {
 a {
   color: #00B7FF;
 }
+
+.randomDog {
+  max-height: 400px;
+  max-width: 400px;
+  
+}

@@ -4,7 +4,13 @@
 <%- include('./partials/header')  %> 
 <%- include('./partials/nav') %>
 <body>
-
+  <% if(dogPhoto.charAt(dogPhoto.length - 1) == '4'){ %>
+    <video class = 'randomDog' autoplay controls>
+      <source src='<%= dogPhoto %>' type='video/mp4'>
+    </video>
+  <% } else { %>
+    <img class = 'randomDog' src='<%= dogPhoto %>' alt ='Dog should be here' >
+  <% } %>
 </body>
 
 </html>
