@@ -3,7 +3,7 @@ const Post = require('../models/post')
 const Photo = require('../models/photo')
 
 module.exports = {
-    index
+    index,
 }
 
 function index(req, res){
@@ -15,3 +15,4 @@ function index(req, res){
         res.render('post', { title: "Posts", photos} )
     })
 }
+

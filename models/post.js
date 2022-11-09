@@ -14,7 +14,7 @@ const commentSchema = new Schema(
 const postSchema = new Schema(
     {
         dog: {type: Schema.Types.ObjectId, ref: 'Photo'},
-        comments: [commentSchema],
+        userComments: [commentSchema],
         likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
     } ,{
         timestamps: true

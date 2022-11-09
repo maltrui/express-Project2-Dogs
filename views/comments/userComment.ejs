@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <%- include('../partials/header')  %> 
+    <%- include('../partials/nav') %>
+
+<body>
+    <table>
+        <thead>
+            <th> Good Dogs </th>
+            <th> Username </th>
+            <th> User Rating </th>
+            <th> User Comment </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>  
+                    <% if(post.photo.charAt(post.photo.length - 1) == '4'){ %>
+                    <video class = 'randomDog' autoplay controls>
+                      <source src=<%= post.photo %> type='video/mp4'>
+                    </video>
+                  <% } else { %>
+                    <img class = 'randomDog' src= <%= post.photo %> alt ='Dog should be here' >
+                  <% } %>
+                </td>
+                <td> <%= post.user.name %></td>
+                <td> <%= post.rating %> out of 10</td>
+                <td> <%= post.content %> </td>
+            </tr>
+        </tbody>
+    </table>
+    <% if (user) { %>
+        <form id="add-dog-comment" method="POST"
+        action="/post/<%=post._id%>/comment">
+          <label>Comment:</label>
+          <textarea name="commentContent"></textarea>
+          <label>Rating:</label>
+          <select name="ratingUser">
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+          </select>
+          <input type="submit" value="Post">
+        </form>
+      <% } %>
+    <% if (comment.userComment){ %>
+        <table>
+            <thead>
+                <th> Username </th>
+                <th> User Rating </th>
+                <th> User Comment </th>
+            </thead>
+            <% comment.forEach(function(r) { %>
+            <tbody>
+                <td> <%= r.commentUser %></td>
+                <td> <%= r.commentRating %> out of 10</td>
+                <td> <%= r.commentContent %> </td>
+            </tbody>
+            <% }) %>
+        </table>
+    <% } else {%>
+        <h4> No comments yet! </h4>
+    <% } %>
+</body>
+
+</html>

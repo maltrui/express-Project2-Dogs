@@ -11,7 +11,7 @@ require("dotenv").config();
 require("./config/database");
 require("./config/passport");
 
-var indexRouter = require("./routes/index");
+var homeRouter = require("./routes/home");
 var usersRouter = require("./routes/users");
 var postRouter = require('./routes/post')
 var showRouter = require('./routes/show')
@@ -48,7 +48,7 @@ app.use(function (req, res, next) {
 });
 
 // ROUTES
-app.use("/", indexRouter);
+app.use("/", homeRouter);
 app.use("/users", usersRouter);
 app.use('/', postRouter)
 app.use('/', showRouter)

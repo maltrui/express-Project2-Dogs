@@ -17,6 +17,11 @@ function create(req, res){
             console.log(err)
         }
         console.log(createdPhoto)
-        res.redirect('/post')
+        console.log(req.body)
+        Post.create(req.body, function(eer, createdPost){
+            res.redirect('/post')
+        })
+        
+
     })
 }

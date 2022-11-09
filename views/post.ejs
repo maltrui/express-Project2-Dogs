@@ -25,10 +25,10 @@
                         <img class = 'randomDog' src= <%= r.photo %> alt ='Dog should be here' >
                       <% } %>
                     </td>
-                    <td><%= r.user.name %></td>
-                    <td><%= r.rating %> </td>
-                    <td><%= r.content %> </td>
-                    <td><a href="">Comment</a></td>
+                    <td> <%= r.user.name %></td>
+                    <td> <%= r.rating %> out of 10</td>
+                    <td> <%= r.content %> </td>
+                    <td><a href="/post/<%=r._id%>">Comment</a></td>
                 </tr>
                 <% }) %>
             </tbody>
