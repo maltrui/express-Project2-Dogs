@@ -22,7 +22,7 @@ router.get("/", function (req, res, next) {
     })
 });
 
-router.post('/post/create', isLoggedIn, indexController.create)
+router.post('/post/create', isLoggedIn, indexController.createPost)
 
 // OAuth Routes
 

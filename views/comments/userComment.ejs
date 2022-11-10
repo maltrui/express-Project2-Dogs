@@ -34,7 +34,7 @@
           <label>Comment:</label>
           <textarea name="commentContent"></textarea>
           <label>Rating:</label>
-          <select name="ratingUser">
+          <select name="commentRating">
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
@@ -45,14 +45,14 @@
           <input type="submit" value="Post">
         </form>
       <% } %>
-    <% if (comment.userComment){ %>
+    <% if (post.userComments.length){ %>
         <table>
             <thead>
                 <th> Username </th>
                 <th> User Rating </th>
                 <th> User Comment </th>
             </thead>
-            <% comment.forEach(function(r) { %>
+            <% post.userComments.forEach(function(r) { %>
             <tbody>
                 <td> <%= r.commentUser %></td>
                 <td> <%= r.commentRating %> out of 10</td>

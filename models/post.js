@@ -13,10 +13,12 @@ const commentSchema = new Schema(
 
 const postSchema = new Schema(
     {
-        dog: {type: Schema.Types.ObjectId, ref: 'Photo'},
-        userComments: [commentSchema],
-        likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
-    } ,{
+        content: {type: String, required: true},
+        rating:{type: Number, require: true},
+        photo: {type: String, required: true},
+        user: {type: Schema.Types.ObjectId, ref: 'User'},
+        userComments: [commentSchema]
+    },{
         timestamps: true
     }
 )
