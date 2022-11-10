@@ -3,12 +3,12 @@
 <%- include('../partials/nav') %>
 
 <body>
-    <h2> Edit Post </h2>
-    <form action="/post/<%= post._id %>?_method=PUT" method="POST">
+    <h2> Edit Comment </h2>
+    <form action="/post/<%= comment._id %>/comment?_method=PUT" method="POST">
         <label>Post:</lable>
-        <input type="text" placeholder='<%= post.content%>' name = 'content' value = '<%= post.content%>'>
+        <input type="text" placeholder='<%= comment.commentContent%>' name = 'commentContent' value = '<%= comment.commentContent%>'>
         <label >Rating:</lable>
-        <select type='number' name="rating" placeholder='<%=post.rating%>' name ='rating' value ='<%= post.rating%>' >
+        <select type='number' name="commentRating" placeholder='<%=comment.commentRating%>' value ='<%= comment.commentRating%>' >
             <option value="10">10</option>
             <option value="11">11</option>
             <option value="12">12</option>
@@ -17,6 +17,5 @@
             <option value="15">15</option>
         </select>
         <input type="submit" value="Post">
-        <input name="photo" value="<%=post.photo%>" placeholder="<%=post.photo%>" class = 'invisible'>
     </form>
 </body>

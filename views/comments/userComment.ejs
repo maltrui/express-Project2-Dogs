@@ -64,6 +64,13 @@
                 <td> <%= r.commentUser %></td>
                 <td> <%= r.commentRating %> out of 10</td>
                 <td> <%= r.commentContent %> </td>
+                <td> <% if(user && user._id.equals(post.user)){ %>
+                    <a href='/post/<%=r._id%>/comment/edit'> Edit </a>
+                    <form action = '/post/<%= r._id %>/comment/?_method=DELETE' method = 'POST'>
+                        <button type='submit'>X</button>
+                    </form>
+                <%  } %>
+                </td>
             </tbody>
             <% }) %>
         </table>

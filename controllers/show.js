@@ -4,9 +4,12 @@ const Post = require('../models/post')
 module.exports = {
     index,
     createComment,
-    edit,
+    editPost,
     updatePost,
-    deletePost
+    deletePost,
+    editComment,
+    updateComment,
+    deleteComment
 }
 
 function index(req, res){
@@ -25,8 +28,7 @@ function createComment(req,res){
     })
 }
 
-function edit(req,res){
-    console.log('here')
+function editPost(req,res){
     Post.findById(req.params.id, function(err, post) {
         res.render('comments/editPost', {title: 'Show Dogs', post})
     })
@@ -55,3 +57,33 @@ function deletePost(req,res){
         })
     })
 }
+
+function editComment(req,res){
+    Post.findOne({'userComments._id': req.params.id}).then(function(post){
+        let comment = post.userComments.id(req.params.id)
+        res.render('comments/editComment', {title: 'Show Dogs', comment})
+    })
+}
+
+function updateComment(req,res){
+    Post.findOne({'userComments._id': req.params.id}).then(function(post){
+        let comment = post.userComments.id(req.params.id)
+        comment.commentContent = req.body.commentContent
+        comment.commentRating = req.body.commentRating
+        console.log(comment)
+        post.save().then(function(){
+            res.redirect(`/post/${post._id}`)
+        })
+    })
+}
+
+function deleteComment(req,res){
+    Post.findOne({'userComments._id': req.params.id}).then(function(post){
+        let comment = post.userComments.id(req.params.id)
+        comment.remove()
+        post.save().then(function(){
+            res.redirect(`/post/${post._id}`)
+        })
+    })
+}
+
