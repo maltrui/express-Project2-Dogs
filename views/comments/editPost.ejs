@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<%- include('../partials/header')  %> 
+<%- include('../partials/nav') %>
+
+<body>
+    <h1> Edit Post </h1>
+    <form action="/post/<%= post._id %>?_method=PUT" method="POST">
+        <label>Post:</lable>
+        <input type="text" placeholder='<%= post.content%>' name = 'content' value = '<%= post.content%>'>
+        <label >Rating:</lable>
+        <select name="rating" placeholder='"<%=post.rating%>"' name ='rating' value ='<%= post.rating%>' >
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+        </select>
+        <input type="submit" value="Post">
+        <input name="photo" value="<%=post.photo%>" placeholder="<%=post.photo%>" class = 'invisible'>
+    </form>
+</body>

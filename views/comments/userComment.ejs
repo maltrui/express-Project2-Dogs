@@ -25,6 +25,13 @@
                 <td> <%= post.user.name %></td>
                 <td> <%= post.rating %> out of 10</td>
                 <td> <%= post.content %> </td>
+                <td> <% if(user && user._id.equals(post.user)){ %>
+                    <a href='/post/<%=post._id%>/edit'> Edit </a>
+                    <form action = '/post/<%= post._id %>?_method=DELETE' method = 'POST'>
+                        <button type='submit'>X</button>
+                    </form>
+                <%  } %>
+                </td>
             </tr>
         </tbody>
     </table>
