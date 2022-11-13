@@ -10,7 +10,6 @@ module.exports = {
 
 function createPost(req, res){
     req.body.user = req.user._id
-    console.log(req.body)
     Post.create(req.body, function(err, createdPost){
         if(err){
             console.log(err)

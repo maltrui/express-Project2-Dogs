@@ -13,8 +13,9 @@ module.exports = {
 }
 
 function index(req, res){
-    Post.findById(req.params.id, function(err, post){
-        res.render('comments/userComment', {title: 'Show Dogs', post})
+    Post.findById(req.params.id).populate('user userComments.commentUser').exec(function(err, post){
+            console.log(post)
+            res.render('comments/userComment', {title: 'Show Dogs', post})
     })
 }
 

@@ -6,11 +6,10 @@ module.exports = {
 }
 
 function index(req, res){
-    Post.find({},function(err, photos){
+    Post.find({}).populate('user').exec(function(err, photos){
         if (err){
             console.log(err)
         }
-        console.log(photos)
         res.render('post', { title: "Posts", photos} )
     })
 }
