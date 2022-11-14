@@ -17,6 +17,8 @@ Get a photo or video of a random Dog, and if you like it enough, share your thou
 - Create comments on your post, or others
 - Edit and delete posts or individual comments
 
+Trello link: https://trello.com/invite/b/vgHqL5zS/ATTI0c025deb68c4240001cda315c855921b7B3F6442/project-2
+
 # Ice Box
 - Abiltity to view all posts, comments on account on a seprate page
 - Notification that there was a comment made on your post
