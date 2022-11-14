@@ -18,8 +18,11 @@
   <% if (user) { %>
     <form id="add-dog-post" method="POST"
     action="/post/create">
+    <td>
       <label>Review:</label>
       <textarea name="content"></textarea>
+    </td>
+    <td>
       <label>Rating:</label>
       <select type ='number' name="rating">
         <option value="10">10</option>
@@ -29,6 +32,8 @@
         <option value="14">14</option>
         <option value="15">15</option>
       </select>
+    </td>
+    <td>
       <input type="submit" value="Post">
       <input name="photo" value="<%=dogPhoto%>" placeholder="<%=dogPhoto%>" class = 'invisible'>
     </td>

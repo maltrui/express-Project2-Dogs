@@ -11,6 +11,7 @@ Get a photo or video of a random Dog, and if you like it enough, share your thou
 - Mongoose
 - MongoDB
 - OAuth
+- Bootstrap
 
 # Functionallity
 - Login and create a post based on a random Dog picture/video
