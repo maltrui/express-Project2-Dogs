@@ -7,10 +7,9 @@ const rootUrl = 'https://random.dog/woof.json'
 
 const indexController = require('../controllers/home')
 
-// import private route middleware
 const isLoggedIn = require("../config/auth");
 
-/* GET home page. */
+
 router.get("/", function (req, res, next) {
   let dogPhoto
   fetch(rootUrl)
@@ -24,9 +23,7 @@ router.get("/", function (req, res, next) {
 
 router.post('/post/create', isLoggedIn, indexController.createPost)
 
-// OAuth Routes
 
-// Go to Google OAuth Login Menu
 router.get(
   "/auth/google",
   passport.authenticate("google", {
@@ -35,7 +32,6 @@ router.get(
   })
 );
 
-// OAuth Callback Route to redirect back to our app after successfully logging in
 router.get(
   "/oauth2callback",
   passport.authenticate("google", {
@@ -44,7 +40,7 @@ router.get(
   })
 );
 
-// OAuth Logout Route
+
 router.get("/logout", function (req, res) {
   req.logout(function (err) {
     if (err) {

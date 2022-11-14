@@ -18,7 +18,6 @@ var showRouter = require('./routes/show')
 
 var app = express();
 
-// view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
@@ -27,9 +26,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
-// Method-Override
+
 app.use(methodOverride("_method"));
-// OAuth Middleware
+
 app.use(
   session({
     secret: process.env.SECRET,
@@ -37,34 +36,32 @@ app.use(
     saveUninitialized: true,
   })
 );
-// Passport Middleware
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-// middleware to send res.locals.user into any view
+
 app.use(function (req, res, next) {
   res.locals.user = req.user;
   next();
 });
 
-// ROUTES
+
 app.use("/", homeRouter);
 app.use("/users", usersRouter);
 app.use('/', postRouter)
 app.use('/', showRouter)
 
-// catch 404 and forward to error handler
+
 app.use(function (req, res, next) {
   next(createError(404));
 });
 
-// error handler
 app.use(function (err, req, res, next) {
-  // set locals, only providing error in development
+
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};
 
-  // render the error page
   res.status(err.status || 500);
   res.render("error");
 });

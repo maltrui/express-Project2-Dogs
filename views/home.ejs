@@ -4,6 +4,8 @@
 <%- include('./partials/header')  %> 
 <%- include('./partials/nav') %>
 <body>
+<table>
+  <td>
   <% if(dogPhoto.charAt(dogPhoto.length - 1) == '4'){ %>
     <video class = 'randomDog' autoplay controls>
       <source src='<%= dogPhoto %>' type='video/mp4'>
@@ -11,6 +13,8 @@
   <% } else { %>
     <img class = 'randomDog' src='<%= dogPhoto %>' alt ='Dog should be here' >
   <% } %>
+  </td>
+  <td>
   <% if (user) { %>
     <form id="add-dog-post" method="POST"
     action="/post/create">
@@ -27,11 +31,12 @@
       </select>
       <input type="submit" value="Post">
       <input name="photo" value="<%=dogPhoto%>" placeholder="<%=dogPhoto%>" class = 'invisible'>
-      
+    </td>
     </form>
   <% } else { %>
     <p> Log-In to make a Post! </p>
  <% } %>
+  </table>
 </body>
 
 </html>

@@ -14,7 +14,6 @@ module.exports = {
 
 function index(req, res){
     Post.findById(req.params.id).populate('user userComments.commentUser').exec(function(err, post){
-            console.log(post)
             res.render('comments/userComment', {title: 'Show Dogs', post})
     })
 }
@@ -52,7 +51,6 @@ function deletePost(req,res){
                 if (err){
                     console.log(err)
                 }
-                console.log(photos)
                 res.render('post', { title: "Posts", photos} )
             })
         })
@@ -71,7 +69,6 @@ function updateComment(req,res){
         let comment = post.userComments.id(req.params.id)
         comment.commentContent = req.body.commentContent
         comment.commentRating = req.body.commentRating
-        console.log(comment)
         post.save().then(function(){
             res.redirect(`/post/${post._id}`)
         })
