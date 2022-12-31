@@ -15,7 +15,6 @@ router.get("/", function (req, res, next) {
   fetch(rootUrl)
     .then((res)=> res.json())
     .then(dog =>{
-      console.log(dog.url)
       dogPhoto = dog.url
       res.render("home", { title: "Pick A Dog", dogPhoto });
     })
